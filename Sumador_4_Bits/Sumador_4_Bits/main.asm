@@ -8,38 +8,47 @@
 ; pero creé este archivo para mostrar que si lo hice yo xd.
 
 
-; Replace with your application code
-start:
-    inc r16
-    rjmp start
+    .include "M328PDEF.inc"
+    .cseg
+    .org    0x0000
 
-/* DELAY CON CONTEO
-Este segmento de código permite crear un delay donde el uC no hace absolutamente nada
-mientras disminuye el valor de 3 contadores.
+    // Configurar la pila
+    LDI     R16, LOW(RAMEND)
+    OUT     SPL, R16
+    LDI     R16, HIGH(RAMEND)
+    OUT     SPH, R16
 
-El algoritmo utiliza los registros R16, R17 y R18
-- El contador R16 cuenta desde 255 a 0 por cada decremento de R17
-- El contador R17 cuenta desde 255 a 0 por cada decremento de R18
+SETUP:
+    // Activación de pines de salida en el puerto B
+    LDI     R16, 0xFF
+    OUT     DDRB, R16
+    LDI     R16, 0x00
+    OUT     PORTB, R16
 
-Sea N16, N17 y N18 los valores iniciales de los contadores en R16-R18, respectivamente
-El número de iteraciones es
+    // Activación de pines de salida en el puerto D
+    LDI     R16, 0xFF
+    OUT     DDRD, R16
+    LDI     R16, 0x00
+    OUT     PORTD, R16
 
-No. Iteraciones = [(N16)*(N17)]*N18
+    // Registros de contadores
+    LDI     R21, 0x00
+	LDI     R22, 0x00
 
-Donde * representa una multiplicación
+MAINLOOP:
+    // Incrementar contadores y sacarlos en los puertos
+    INC     R21
+    OUT     PORTB, R21
+    CALL    DELAY_255_POW3
 
-Por las limitaciones de memoria en el ATMega328P este contador puede hacer 255^3 conteos en menos de 30 líneas de código (Eficiente, yuju).
-*/
+	INC     R22
+    OUT     PORTD, R22
+    CALL    DELAY_255_POW3
 
-/*
-Con los valores de R16, R17 y R18 el tiempo tomado por la función DELAY_255_POW3 asumiendo una frecuencia de oscilador de
-f = 16 MHz o 16 Millones de conteos por segundo es
+    RJMP    MAINLOOP
 
-t = 256*256*8 conteos / (16 x 10^6 conteos/s) = 0.032
 
-¡Dado que 256^3 es aproximadamente 16 millones, al colocar R16 = 0XFF, R17 = 0XFF y R18 = 0XFF podemos hacer delays de hasta 1 segundo!
-*/
-
+// Delay con conteo
 DELAY_255_POW3:
     LDI     R18, 32		// ESTABLECER R18 AQUÍ
 
