@@ -48,37 +48,37 @@ MAINLOOP:
 	// debemos desplazar los bits de R20 4 bits a la izquierda
 
 	// Afortunadamente ya existe una función precisamente para eso
-	MOV		R21, R20
-	SWAP	R21 // Con esto intercambiamos los nibbles de R20
+	MOV		R23, R22	// Copiamos el valor de R20 en E21 para no alterar su valor
+	SWAP	R23			// Con esto intercambiamos los nibbles de R20
 
-	// Ahora unimos las dos cosas
-	OR		R16, R21
+	// Ahora unimos los bits de R16 y R21
+	OR		R20, R23
 
 	// Finalmente las sacamos en PORTD
-	OUT		PORTD, R16
+	OUT		PORTD, R20
 
 
 	// Repetir todo
 	RJMP MAINLOOP
 
 CONTADOR1:
-	// Guardamos el valor de PORTB en R17 (Aquí van las dos entradas)
-	IN		R17, PORTB
+	// Guardamos el valor de PORTB en R19 (Aquí van las dos entradas)
+	IN		R19, PORTB
 
 	// Cambio de flujo - Decremento
-	SBRC	R17, 0
+	SBRC	R19, 0
 	CALL	DELAY_255_POW3
-	SBRC	R17, 0 
-	DEC		R16
+	SBRC	R19, 0 
+	DEC		R20
 
 	// Cambio de flujo - Incremento
-	SBRC	R17, 1
+	SBRC	R19, 1
 	CALL	DELAY_255_POW3
-	SBRC	R17, 1
-	INC		R16
+	SBRC	R19, 1
+	INC		R20
 
 	// Truncar resultado a sólo cuatro bits
-	ANDI	R16, 0x0F
+	ANDI	R20, 0x0F
 
 	// Mostrar el resultado en PORTD
 	// OUT		PORTD, R16
@@ -91,31 +91,25 @@ CONTADOR2:
 	// El bit 2 servirá para decrementar el valor del contador
 	// El bit 3 se usará para incrementar el valor del contador
 
-	// Guardamos el valor de PORTB en R17 (Aquí van las dos entradas)
-	IN		R17, PORTB
+	// Guardamos el valor de PORTB en R19 (Aquí van las dos entradas)
+	IN		R21, PORTB
 
 	// Cambio de flujo - Decremento
-	SBRC	R17, 2
+	SBRC	R21, 2
 	CALL	DELAY_255_POW3
-	SBRC	R17, 2 
-	DEC		R20
+	SBRC	R21, 2 
+	DEC		R22
 
 	// Cambio de flujo - Incremento
-	SBRC	R17, 3
+	SBRC	R21, 3
 	CALL	DELAY_255_POW3
-	SBRC	R17, 3
-	INC		R20
+	SBRC	R21, 3
+	INC		R22
 
 	// Truncar resultado a sólo cuatro bits
-	ANDI	R20, 0x0F
+	ANDI	R22, 0x0F
 
 	// Desplazar los 4 bits hacia la izquierda
-
-
-	// Mostrar el resultado en PORTD
-	// OUT		PORTD, R20
-	// Podemos ver que el registro R20
-
 	// Regresar a MAINLOOP
 	RET
 
