@@ -7,6 +7,12 @@
 ; Nota importante 2: Olvidé crear el repositorio al inicio del lab. Voy a subir ese archivo como muestra de que si trabajé ese día
 ; pero creé este archivo para mostrar que si lo hice yo xd.
 
+/*
+He aquí un resumen de lo hecho en el laboratorio
+1. Tomé el prelaboratorio y lo modifiqué para que hubieran dos contadores
+2. Por cada revisión de las entradas hay un delay para antirrebotes.
+*/
+
 
 .include "M328PDEF.inc"
 .cseg
