@@ -67,13 +67,13 @@ CONTADOR1:
 
 	// Cambio de flujo - Decremento
 	SBRC	R17, 0
-	CALL	DELAY_SETUP
+	CALL	DELAY_255_POW3
 	SBRC	R17, 0 
 	DEC		R16
 
 	// Cambio de flujo - Incremento
 	SBRC	R17, 1
-	CALL	DELAY_SETUP
+	CALL	DELAY_255_POW3
 	SBRC	R17, 1
 	INC		R16
 
@@ -96,13 +96,13 @@ CONTADOR2:
 
 	// Cambio de flujo - Decremento
 	SBRC	R17, 2
-	CALL	DELAY_SETUP
+	CALL	DELAY_255_POW3
 	SBRC	R17, 2 
 	DEC		R20
 
 	// Cambio de flujo - Incremento
 	SBRC	R17, 3
-	CALL	DELAY_SETUP
+	CALL	DELAY_255_POW3
 	SBRC	R17, 3
 	INC		R20
 
