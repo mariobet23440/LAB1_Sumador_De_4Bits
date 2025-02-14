@@ -118,7 +118,7 @@ CONTADOR2:
 SUMA:
 	IN		R25, PINC	// Guardamos el valor de PORTB en R19 (Aquí van las dos entradas)
 	ADC		R24, R22	// Sumamos el valor de R24 y R22 y lo guardamos en R24 (Dado que es solo una copia del contador)
-	ANDI	R24, 0X4F	// Truncamos la suma a solo 5 bits (El acarreo es el último bit)
+	ANDI	R24, 0X1F	// Truncamos la suma a solo 5 bits (El acarreo es el último bit)
 
 	// Rutina de antirrebote
 	SBRS	R25, 0			// Por alguna extraña raz´´on, este bit está SET por default
