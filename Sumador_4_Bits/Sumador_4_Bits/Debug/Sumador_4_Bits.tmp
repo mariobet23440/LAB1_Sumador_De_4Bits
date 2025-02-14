@@ -1,0 +1,37 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\Debug\Sumador_4_Bits.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Sumador_4_Bits.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Sumador_4_Bits.map</FILE>
+  <FILE>Sumador_4_Bits.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <SETUP><FILE>C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\main.asm</FILE><LINE>27</LINE></SETUP>
+  <MAINLOOP><FILE>C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\main.asm</FILE><LINE>47</LINE></MAINLOOP>
+  <CONTADOR1><FILE>C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\main.asm</FILE><LINE>70</LINE></CONTADOR1>
+  <CONTADOR2><FILE>C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\main.asm</FILE><LINE>95</LINE></CONTADOR2>
+  <DELAY_255_POW3><FILE>C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\main.asm</FILE><LINE>126</LINE></DELAY_255_POW3>
+  <DELAY_255_POW3_LOOP><FILE>C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\main.asm</FILE><LINE>129</LINE></DELAY_255_POW3_LOOP>
+  <DELAY_SETUP><FILE>C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\main.asm</FILE><LINE>135</LINE></DELAY_SETUP>
+  <DELAY_LOOP><FILE>C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\main.asm</FILE><LINE>138</LINE></DELAY_LOOP>
+  <DELAY_END><FILE>C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\main.asm</FILE><LINE>149</LINE></DELAY_END>
+  <CONTEO_R16><FILE>C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\main.asm</FILE><LINE>144</LINE></CONTEO_R16>
+ </LABELS>
+</ASSEMBLER_INFO>

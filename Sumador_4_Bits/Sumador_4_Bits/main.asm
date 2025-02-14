@@ -33,9 +33,9 @@ SETUP:
 
 	// Activación de pines de entrada en el puerto C
     LDI     R16, 0x00
-    OUT     DDRB, R16
+    OUT     DDRC, R16
     LDI     R16, 0xFF		// Activar Pull-ups
-    OUT     PORTB, R16
+    OUT     PORTC, R16
 
     // Activación de pines de salida en el puerto D
     LDI     R16, 0xFF
