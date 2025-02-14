@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\main.asm Thu Feb 13 15:07:46 2025
+AVRASM ver. 2.2.8  C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\main.asm Thu Feb 13 21:36:40 2025
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumador_4_Bits\main.asm(17): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
@@ -1100,7 +1100,7 @@ C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumad
                                  
                                  CONTADOR1:
                                  	// Guardamos el valor de PORTB en R19 (Aquí van las dos entradas)
-000019 b135                      	IN		R19, PORTB
+000019 b136                      	IN		R19, PINC
                                  
                                  	// Cambio de flujo - Decremento
 00001a fd30                      	SBRC	R19, 0
@@ -1129,7 +1129,7 @@ C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumad
                                  	// El bit 3 se usará para incrementar el valor del contador
                                  
                                  	// Guardamos el valor de PORTB en R19 (Aquí van las dos entradas)
-000026 b155                      	IN		R21, PORTB
+000026 b156                      	IN		R21, PINC
                                  
                                  	// Cambio de flujo - Decremento
 000027 fd52                      	SBRC	R21, 2
@@ -1155,7 +1155,7 @@ C:\Programacion-de-Microcontroladores\LAB1_Sumador_De_4Bits\Sumador_4_Bits\Sumad
                                  // NO TOCAR ------------------------------------------------------------------------
                                  // Delay con conteo
                                  DELAY_255_POW3:
-000033 e220                          LDI     R18, 32		// ESTABLECER R18 AQUÍ
+000033 e023                          LDI     R18, 3		// ESTABLECER R18 AQUÍ
                                  
                                  DELAY_255_POW3_LOOP:
 000034 940e 0039                     CALL    DELAY_SETUP

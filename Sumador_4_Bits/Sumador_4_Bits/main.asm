@@ -69,18 +69,18 @@ MAINLOOP:
 
 CONTADOR1:
 	// Guardamos el valor de PORTB en R19 (Aquí van las dos entradas)
-	IN		R19, PORTB
+	IN		R19, PINC
 
 	// Cambio de flujo - Decremento
-	SBRC	R19, 0
+	SBRC	R19, 5
 	CALL	DELAY_255_POW3
-	SBRC	R19, 0 
+	SBRC	R19, 5 
 	DEC		R20
 
 	// Cambio de flujo - Incremento
-	SBRC	R19, 1
+	SBRC	R19, 4
 	CALL	DELAY_255_POW3
-	SBRC	R19, 1
+	SBRC	R19, 4
 	INC		R20
 
 	// Truncar resultado a sólo cuatro bits
@@ -98,18 +98,18 @@ CONTADOR2:
 	// El bit 3 se usará para incrementar el valor del contador
 
 	// Guardamos el valor de PORTB en R19 (Aquí van las dos entradas)
-	IN		R21, PORTB
+	IN		R21, PINC
 
 	// Cambio de flujo - Decremento
-	SBRC	R21, 2
+	SBRC	R21, 3
 	CALL	DELAY_255_POW3
-	SBRC	R21, 2 
+	SBRC	R21, 3 
 	DEC		R22
 
 	// Cambio de flujo - Incremento
-	SBRC	R21, 3
+	SBRC	R21, 2
 	CALL	DELAY_255_POW3
-	SBRC	R21, 3
+	SBRC	R21, 2
 	INC		R22
 
 	// Truncar resultado a sólo cuatro bits
@@ -124,7 +124,7 @@ CONTADOR2:
 // NO TOCAR ------------------------------------------------------------------------
 // Delay con conteo
 DELAY_255_POW3:
-    LDI     R18, 32		// ESTABLECER R18 AQUÍ
+    LDI     R18, 3		// ESTABLECER R18 AQUÍ
 
 DELAY_255_POW3_LOOP:
     CALL    DELAY_SETUP
