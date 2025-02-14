@@ -49,20 +49,18 @@ MAINLOOP:
 	CALL	CONTADOR1
 	CALL	CONTADOR2
 
-	// Una vez que se haya regresado, debemos unir los bits de R16 y R20
-	// Para colocar los bits de R16 como los últimos bits de PORTD y los bits de R20 como los primeros
+	// Una vez que se haya regresado, debemos unir los bits de R20 y R22
+	// Para colocar los bits de R20 como los últimos bits de PORTD y los bits de R22 como los primeros
 	// debemos desplazar los bits de R20 4 bits a la izquierda
 
-	// Afortunadamente ya existe una función precisamente para eso
-	MOV		R23, R22	// Copiamos el valor de R20 en E21 para no alterar su valor
+	// Sacar los valores de los contadores en PORTD
+	MOV		R23, R22	// Copiamos el valor de R21 en E23 para no alterar su valor
 	SWAP	R23			// Con esto intercambiamos los nibbles de R20
+	MOV		R24, R20	// Guardamos el valor de R20 en otro registro (Nos servirá más adelante)
+	OR		R20, R23	// Ahora unimos los bits de R20 y R23
+	OUT		PORTD, R20	// Sacamos los contadores en PORTD
 
-	// Ahora unimos los bits de R16 y R21
-	OR		R20, R23
-
-	// Finalmente las sacamos en PORTD
-	OUT		PORTD, R20
-
+	CALL	SUMA
 
 	// Repetir todo
 	RJMP MAINLOOP
@@ -72,9 +70,9 @@ CONTADOR1:
 	IN		R19, PINC
 
 	// Cambio de flujo - Decremento
-	SBRC	R19, 5
+	SBRC	R19, 3
 	CALL	DELAY_255_POW3
-	SBRC	R19, 5 
+	SBRC	R19, 3 
 	DEC		R20
 
 	// Cambio de flujo - Incremento
@@ -86,9 +84,6 @@ CONTADOR1:
 	// Truncar resultado a sólo cuatro bits
 	ANDI	R20, 0x0F
 
-	// Mostrar el resultado en PORTD
-	// OUT		PORTD, R16
-
 	// Regresar a MAINLOOP
 	RET
 
@@ -97,13 +92,13 @@ CONTADOR2:
 	// El bit 2 servirá para decrementar el valor del contador
 	// El bit 3 se usará para incrementar el valor del contador
 
-	// Guardamos el valor de PORTB en R19 (Aquí van las dos entradas)
+	// Guardamos el valor de PORTB en R21 (Aquí van las dos entradas)
 	IN		R21, PINC
 
 	// Cambio de flujo - Decremento
-	SBRC	R21, 3
+	SBRC	R21, 1
 	CALL	DELAY_255_POW3
-	SBRC	R21, 3 
+	SBRC	R21, 1 
 	DEC		R22
 
 	// Cambio de flujo - Incremento
@@ -119,12 +114,26 @@ CONTADOR2:
 	// Regresar a MAINLOOP
 	RET
 
+// Mostrar la suma en PORTB
+SUMA:
+	IN		R25, PINC	// Guardamos el valor de PORTB en R19 (Aquí van las dos entradas)
+	ADC		R24, R22	// Sumamos el valor de R24 y R22 y lo guardamos en R24 (Dado que es solo una copia del contador)
+	ANDI	R24, 0X4F	// Truncamos la suma a solo 5 bits (El acarreo es el último bit)
+
+	// Rutina de antirrebote
+	SBRS	R25, 0			// Por alguna extraña raz´´on, este bit está SET por default
+	CALL	DELAY_255_POW3
+	SBRS	R25, 0			// Si el bit 0 del PINC está apagado, mostrar la suma en PORTB 
+	OUT		PORTB, R24		//
+
+	RET
+
 
 
 // NO TOCAR ------------------------------------------------------------------------
 // Delay con conteo
 DELAY_255_POW3:
-    LDI     R18, 3		// ESTABLECER R18 AQUÍ
+    LDI     R18, 4		// ESTABLECER R18 AQUÍ
 
 DELAY_255_POW3_LOOP:
     CALL    DELAY_SETUP
