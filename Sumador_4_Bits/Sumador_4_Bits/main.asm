@@ -43,6 +43,12 @@ SETUP:
     LDI     R16, 0x00
     OUT     PORTD, R16
 
+	// Configurar el oscilador para que oscile a 1 MHz
+	LDI		R16, (1 << CLKPCE)	// CLKPCE es el bit 7 de CLKPR
+	STS		CLKPR, R16
+	LDI		R16, 0X04
+	STS		CLKPR, R16		
+
 
 MAINLOOP:
 	// Ejecutar incremento y decremento de contadores
@@ -133,7 +139,7 @@ SUMA:
 // NO TOCAR ------------------------------------------------------------------------
 // Delay con conteo
 DELAY_255_POW3:
-    LDI     R18, 4		// ESTABLECER R18 AQUÍ
+    LDI     R18, 1		// ESTABLECER R18 AQUÍ
 
 DELAY_255_POW3_LOOP:
     CALL    DELAY_SETUP
@@ -142,7 +148,7 @@ DELAY_255_POW3_LOOP:
     RET
 
 DELAY_SETUP:
-    LDI     R17, 255	// ESTABLECER EL VALOR MÁXIMO DE R17 AQUÍ
+    LDI     R17, 64	// ESTABLECER EL VALOR MÁXIMO DE R17 AQUÍ
 
 DELAY_LOOP:
     LDI     R16, 0xFF	// ESTABLECER EL VALOR MÁXIMO DE R16 AQUÍ
